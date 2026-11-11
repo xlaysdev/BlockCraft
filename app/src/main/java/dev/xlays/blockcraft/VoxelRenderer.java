@@ -38,7 +38,7 @@ public class VoxelRenderer implements GLSurfaceView.Renderer {
         rebuild();
     }
     private void rebuild(){
-        float[] v=new float[SIZE*SIZE*HEIGHT*6*6*6]; float[] c=new float[v.length]; int n=0;
+        float[] v=new float[SIZE*SIZE*HEIGHT*6*6*3]; float[] c=new float[v.length]; int n=0;
         float[][][] face={{{0,0,0},{0,1,0},{1,1,0},{0,0,0},{1,1,0},{1,0,0}},{{0,0,1},{1,0,1},{1,1,1},{0,0,1},{1,1,1},{0,1,1}},{{0,0,0},{0,0,1},{0,1,1},{0,0,0},{0,1,1},{0,1,0}},{{1,0,0},{1,1,0},{1,1,1},{1,0,0},{1,1,1},{1,0,1}},{{0,1,0},{0,1,1},{1,1,1},{0,1,0},{1,1,1},{1,1,0}},{{0,0,0},{1,0,0},{1,0,1},{0,0,0},{1,0,1},{0,0,1}}};
         float[][] shades={{.72f,.72f,.72f},{.86f,.86f,.86f},{.58f,.58f,.58f},{.68f,.68f,.68f},{1,1,1},{.48f,.48f,.48f}};
         float[][] palette={{.28f,.68f,.20f},{.48f,.30f,.16f},{.48f,.49f,.51f},{.48f,.29f,.12f},{.18f,.52f,.16f},{.20f,.58f,.17f}};
