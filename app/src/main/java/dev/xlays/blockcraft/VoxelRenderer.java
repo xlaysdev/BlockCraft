@@ -54,7 +54,7 @@ public class VoxelRenderer implements GLSurfaceView.Renderer {
         colors=ByteBuffer.allocateDirect(n*4).order(ByteOrder.nativeOrder()).asFloatBuffer();colors.put(c,0,n).position(0);
     }
     private int shader(int type,String src){int s=GLES20.glCreateShader(type);GLES20.glShaderSource(s,src);GLES20.glCompileShader(s);return s;}
-    @Override public void onSurfaceCreated(javax.microedition.khronos.egl.EGLConfig config){
+    @Override public void onSurfaceCreated(javax.microedition.khronos.opengles.GL10 gl, javax.microedition.khronos.egl.EGLConfig config){
         program=GLES20.glCreateProgram();GLES20.glAttachShader(program,shader(GLES20.GL_VERTEX_SHADER,VS));GLES20.glAttachShader(program,shader(GLES20.GL_FRAGMENT_SHADER,FS));GLES20.glLinkProgram(program);
         posHandle=GLES20.glGetAttribLocation(program,"aPos");colorHandle=GLES20.glGetAttribLocation(program,"aColor");mvpHandle=GLES20.glGetUniformLocation(program,"uMVP");
         GLES20.glEnable(GLES20.GL_DEPTH_TEST);GLES20.glClearColor(.48f,.72f,.94f,1);
