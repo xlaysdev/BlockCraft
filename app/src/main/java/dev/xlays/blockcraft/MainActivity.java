@@ -59,7 +59,7 @@ public class MainActivity extends Activity {
         hint.setTextColor(0xffffffff); hint.setTextSize(13); hint.setPadding(14,8,14,8);
         FrameLayout.LayoutParams hp = new FrameLayout.LayoutParams(-2,-2,Gravity.TOP|Gravity.CENTER_HORIZONTAL);
         root.addView(hint,hp);
-        root.setOnTouchListener((v,e)->{
+        game.setOnTouchListener((v,e)->{
             if(e.getX()>getResources().getDisplayMetrics().widthPixels*.38f){
                 if(e.getAction()==MotionEvent.ACTION_DOWN){downX=e.getX();downY=e.getY();moving=true;return true;}
                 if(e.getAction()==MotionEvent.ACTION_MOVE && moving){game.look((e.getX()-downX)*.22f,(e.getY()-downY)*.18f);downX=e.getX();downY=e.getY();return true;}
