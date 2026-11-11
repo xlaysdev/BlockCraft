@@ -32,15 +32,12 @@ jobs:
         uses: android-actions/setup-android@v3
       - name: Install SDK packages
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
-      - name: Validate Gradle wrapper
-        run: |
-          if [ ! -f gradlew ]; then
-            echo "Gradle wrapper is missing. Add gradlew and gradle/wrapper/gradle-wrapper.jar to build locally or from Android Studio."
-            exit 1
-          fi
-          chmod +x gradlew
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
       - name: Build debug APK
-        run: ./gradlew --no-daemon --stacktrace assembleDebug
+        run: gradle --no-daemon --stacktrace assembleDebug
       - name: Verify APK exists
         run: test -s app/build/outputs/apk/debug/app-debug.apk
       - name: Upload APK
